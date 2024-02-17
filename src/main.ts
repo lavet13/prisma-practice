@@ -7,7 +7,7 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 
 import typeDefs from './graphql/types';
 import resolvers from './graphql/resolvers';
-import main from './script';
+import main from './script-1';
 
 export interface ContextValue {
   token?: string | string[];
@@ -40,13 +40,14 @@ async function bootstrap() {
 
   app.use(import.meta.env.VITE_GRAPHQL_ENDPOINT, yoga);
 
-  await main();
+  // await main();
 
   if (import.meta.env.PROD) {
     app.listen(import.meta.env.VITE_PORT, () => {
       console.log(
-        `🚀 Query endpoint ready at http://localhost:${import.meta.env.VITE_PORT
-        }`
+        `🚀 Query endpoint ready at http://localhost:${
+          import.meta.env.VITE_PORT
+        }`,
       );
     });
   }
